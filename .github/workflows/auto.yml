@@ -1,0 +1,16 @@
+name: notify-action-to-build-this-one
+
+on:
+  push:
+    branches: [ auto ]
+
+jobs:
+  notify-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify workflow by `repository_dispatch` typed `auto-build-docker-proj1` on repo `insthync/sample-checkout-build-github-action`
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GIT_TOKEN }}
+          repository: insthync/sample-checkout-build-github-action
+          event-type: auto-build-docker-proj1
